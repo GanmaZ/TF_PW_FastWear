@@ -14,7 +14,7 @@ import pe.edu.upc.entities.Empresa;
 
 public class EmpresaImpl implements IEmpresaDao {
 
-	@PersistenceContext(unitName = "TF_FastWearDS")
+	@PersistenceContext(unitName = "TF_FastWear")
 	private EntityManager em;
 
 	@Transactional

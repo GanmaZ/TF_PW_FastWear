@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IPosteoDao;
 import pe.edu.upc.entities.Posteo;
 
 public class PosteoImpl implements IPosteoDao {
-	@PersistenceContext(unitName = "TF_FastWearDS")
+	@PersistenceContext(unitName = "TF_FastWear")
 	private EntityManager em;
 	
 	@Transactional

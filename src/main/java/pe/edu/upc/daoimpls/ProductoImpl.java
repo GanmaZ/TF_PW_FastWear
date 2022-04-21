@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IProductoDao;
 import pe.edu.upc.entities.Producto;
 
 public class ProductoImpl implements IProductoDao {
-	@PersistenceContext(unitName = "TF_FastWearDS")
+	@PersistenceContext(unitName = "TF_FastWear")
 	private EntityManager em;
 
 	@Transactional

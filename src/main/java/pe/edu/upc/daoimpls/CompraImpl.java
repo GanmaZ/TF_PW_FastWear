@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.ICompraDao;
 import pe.edu.upc.entities.Compra;
 
 public class CompraImpl implements ICompraDao {
-	@PersistenceContext(unitName = "TF_FastWearDS")
+	@PersistenceContext(unitName = "TF_FastWear")
 	private EntityManager em;
 
 	@Transactional

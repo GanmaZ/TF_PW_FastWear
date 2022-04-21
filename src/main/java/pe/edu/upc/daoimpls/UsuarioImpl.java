@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IUsuarioDao;
 import pe.edu.upc.entities.Usuario;
 
 public class UsuarioImpl implements IUsuarioDao {
-	@PersistenceContext(unitName = "TF_FastWearDS")
+	@PersistenceContext(unitName = "TF_FastWear")
 	private EntityManager em;
 
 	@Transactional
