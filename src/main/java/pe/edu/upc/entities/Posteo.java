@@ -21,14 +21,14 @@ public class Posteo {
 	@Column(name = "FechaPosteo", nullable = false)
 	private Date FechaPosteo;
 	
-	@Column(name = "CantReacciones", nullable = false)
-	private String CantReacciones;
+	@Column(name = "CantReacciones", nullable = true)
+	private int CantReacciones;
 	
 	public Posteo() {
 		super();
 		
 	}
-	public Posteo(int idPosteo, String DescripcionPosteo, Date FechaPosteo, String CantReacciones) {
+	public Posteo(int idPosteo, String DescripcionPosteo, Date FechaPosteo, int CantReacciones) {
 		super();
 		this.idPosteo=idPosteo;
 		this.DescripcionPosteo=DescripcionPosteo;
@@ -53,10 +53,10 @@ public class Posteo {
 	public void setFechaPosteo(Date fechaPosteo) {
 		FechaPosteo = fechaPosteo;
 	}
-	public String getCantReacciones() {
+	public int getCantReacciones() {
 		return CantReacciones;
 	}
-	public void setCantReacciones(String cantReacciones) {
+	public void setCantReacciones(int cantReacciones) {
 		CantReacciones = cantReacciones;
 	}
 	

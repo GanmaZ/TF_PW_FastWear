@@ -4,8 +4,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="TF_FastWear" transaction-type="JTA">
-		<jta-data-source>java:/TF_JimDS</jta-data-source>
+		<jta-data-source>java:/TF_FastWearDS</jta-data-source>
 		<class>pe.edu.upc.entities.Usuario</class>
+		<class>pe.edu.upc.entities.Empresa</class>
+		<class>pe.edu.upc.entities.Producto</class>
+		<class>pe.edu.upc.entities.Posteo</class>
+		<class>pe.edu.upc.entities.Compra</class>
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"

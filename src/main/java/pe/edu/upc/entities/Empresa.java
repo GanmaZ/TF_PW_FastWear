@@ -19,13 +19,13 @@ public class Empresa {
 	private String nombreEmpresa;
 
 	@Column(name = "ruc", nullable = false, length = 47)
-	private String ruc; // ruc es String también
+	private String ruc;
 
 	@Column(name = "sedeEmpresa", nullable = false, length = 47)
 	private String sedeEmpresa;
 
 	@Column(name = "telefonoEmpresa", nullable = false, length = 47)
-	private String telefonoEmpresa; // teléfono no es int, es String
+	private String telefonoEmpresa; 
 
 	@Column(name = "direccionEmpresa", nullable = false, length = 47)
 	private String direccionEmpresa;
