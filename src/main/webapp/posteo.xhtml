@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Postear</h2>
+		<h:form>
+			
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{posteoController.p.idPosteo}"></p:inputText>
+				
+			<h:outputLabel value="Descripcion: " for="descripcion"
+				styleClass="control-label" />
+			<p:inputText id="descripcion" styleClass="form-control"
+				value="#{posteoController.p.descripcionPosteo}"></p:inputText>
+				
+			<h:outputLabel value="Fecha de posteo: " for="fecha"
+				styleClass="control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{posteoController.p.fechaPosteo}" showOn="button"
+				timeZone="America/Mexico_City"></p:calendar>
+			  
+			<h:outputLabel value="CantReaccion" for="cantreaccion"
+				styleClass="control-label" />
+			<p:inputText id="cantreaccion" styleClass="form-control"
+				value="#{posteoController.p.cantReacciones}"></p:inputText>
+			 
+			<p:commandButton value="Grabar"
+				actionListener="#{posteoController.insert()}"
+				action="posteo?faces-redirect=true" update="@form"></p:commandButton>
+						
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

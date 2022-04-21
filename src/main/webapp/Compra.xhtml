@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de compras</h2>
+		<h:form>
+
+			<h:outputLabel value="Id" for="idCompra" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{compraController.c.idCompra}"></p:inputText>
+
+
+			<h:outputLabel value="Total: " for="total"
+				styleClass="control-label" />
+			<p:inputText id="Total" styleClass="form-control"
+				value="#{compraController.c.total}"></p:inputText>
+
+
+			<h:outputLabel value="Fecha de compra: " for="fechaCompra"
+				styleClass="control-label" />
+			<p:calendar id="fechaCompra" pattern="dd/MM/yyyy"
+				value="#{compraController.c.fechaCompra}" showOn="button"
+				timeZone="America/Mexico_City"></p:calendar>
+
+
+			<h:outputLabel value="Metodo de pago: " for="metodoPago"
+				styleClass="control-label" />
+			<p:inputText id="metodoPago" styleClass="form-control"
+				value="#{compraController.c.metodoPago}"></p:inputText>
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{compraController.insert()}"
+				action="compra?faces-redirect=true" update="@form"></p:commandButton>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
