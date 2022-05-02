@@ -35,6 +35,17 @@
 				styleClass="control-label" />
 			<p:inputText id="telefono" styleClass="form-control"
 				value="#{usuarioController.u.telefonoUsuario}"></p:inputText>
+					
+				<h:outputLabel value="Ciudad" styleClass="label-control"
+                for="cboCiudad" />
+
+            <p:selectOneMenu id="cboCiudad"
+                value="#{usuarioController.u.ciudad}"
+                converter="omnifaces.SelectItemsConverter">
+                <f:selectItems
+                    value="#{usuarioController.listaCiudades}" var="u"
+                    itemLabel="#{u.nombreCiudad}" itemValue="#{u}" />
+            </p:selectOneMenu>
 
 			<p:commandButton value="Registrar"
 				actionListener="#{usuarioController.insert()}"

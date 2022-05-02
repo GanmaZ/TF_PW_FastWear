@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +15,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int IdUsuario;
-	
+
 	@Column(name = "NombreUsuario", nullable = false, length = 47)
 	private String NombreUsuario;
 	@Column(name = "ApellidoUsuario", nullable = false, length = 47)
@@ -25,13 +27,17 @@ public class Usuario {
 	@Column(name = "TelefonoUsuario", nullable = false, length = 47)
 	private String TelefonoUsuario;
 
+	@ManyToOne
+	@JoinColumn(name = "idCiudad", nullable = false)
+	private Ciudad ciudad;
+
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(int idUsuario, String nombreUsuario, String apellidoUsuario, String correoUsuario,
-			String claveUsuario, String telefonoUsuario) {
+			String claveUsuario, String telefonoUsuario, Ciudad ciudad) {
 		super();
 		this.IdUsuario = idUsuario;
 		this.NombreUsuario = nombreUsuario;
@@ -39,6 +45,7 @@ public class Usuario {
 		this.CorreoUsuario = correoUsuario;
 		this.ClaveUsuario = claveUsuario;
 		this.TelefonoUsuario = telefonoUsuario;
+		this.ciudad=ciudad;
 	}
 
 	public int getIdUsuario() {
@@ -89,4 +96,13 @@ public class Usuario {
 		TelefonoUsuario = telefonoUsuario;
 	}
 
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
+	}
+
+	
 }
