@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de Categoria</h2>
+		<h:form>
+
+			<h:outputLabel value="Categoria" styleClass="label-control"
+				for="cboCategoria" />
+
+			<p:selectOneMenu id="cboCategoria"
+				value="#{categoriaProductoController.cp.categoria}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems
+					value="#{categoriaProductoController.listaCategorias}" var="cp"
+					itemLabel="#{cp.nombreCategoria}" itemValue="#{cp}" />
+			</p:selectOneMenu>
+
+			<h:outputLabel value="Producto" styleClass="label-control"
+				for="cboProducto" />
+
+			<p:selectOneMenu id="cboProducto"
+				value="#{categoriaProductoController.cp.producto}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{categoriaProductoController.listaProductos}"
+					var="cp" itemLabel="#{cp.nombreProducto}" itemValue="#{cp}" />
+			</p:selectOneMenu>
+
+			<p:commandButton value="Registrar"
+				actionListener="#{categoriaProductoController.insert()}"
+				action="CategoriaProducto?faces-redirect-true" update="@form"
+				styleClass="btn btn-primary" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

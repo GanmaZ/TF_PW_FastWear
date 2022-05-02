@@ -1,9 +1,8 @@
-<<<<<<< HEAD
-..Sergio
-=======
-.Airton
-.jim
+.Airton.
+.jim.
 .joel
-
+.Javier.
 .Sergio.
->>>>>>> branch 'Sergio' of https://github.com/GanmaZ/TF_PW_FastWear.git
+
+
+
