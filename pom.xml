@@ -52,6 +52,6 @@
 			<artifactId>omnifaces</artifactId>
 			<version>3.13</version>
 		</dependency>
-		
+
 	</dependencies>
 </project>

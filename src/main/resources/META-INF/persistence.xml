@@ -10,8 +10,10 @@
 		<class>pe.edu.upc.entities.Producto</class>
 		<class>pe.edu.upc.entities.Posteo</class>
 		<class>pe.edu.upc.entities.Compra</class>
+		<class>pe.edu.upc.entities.Ciudad</class>
 		<class>pe.edu.upc.entities.Categoria</class>
 		<class>pe.edu.upc.entities.CategoriaProducto</class>
+
 		<properties>
 			<property
 				name="javax.persistence.schema-generation.database.action"
