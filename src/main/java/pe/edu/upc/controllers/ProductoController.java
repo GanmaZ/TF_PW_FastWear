@@ -9,33 +9,43 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Producto;
+import pe.edu.upc.entities.TipoProducto;
 import pe.edu.upc.serviceinterfaces.IProductoService;
+import pe.edu.upc.serviceinterfaces.ITipoProductoService;
+
 @Named
 @RequestScoped
 public class ProductoController {
 	@Inject
 	private IProductoService pService;
-	
-	
-	//atributos
+
 	private Producto p;
-	List <Producto> listaProductos;
-	
-	//metodos
+	private List<Producto> listaProductos;
+
+	@Inject
+	private ITipoProductoService tiService;
+
+	// atributos
+
+	private List<TipoProducto> listaTipoProductos;
+
+	// metodos
 	@PostConstruct
 	public void init() {
-		this.listaProductos = new ArrayList<Producto>();
 		this.p = new Producto();
+		this.listaProductos = new ArrayList<Producto>();
+		this.listaTipoProductos = new ArrayList<TipoProducto>();
+		this.listTipoProducto();
 		this.list();
 	}
-	
-	public String newProducto() {
+
+// de esto no dice nada ah
+/*	public String newProducto() {
 		this.setP(new Producto());
 		return "producto.html";
 	}
-	
-	public void insert()
-	{
+*/
+	public void insert() {
 		try {
 			pService.insert(p);
 		} catch (Exception e) {
@@ -43,36 +53,53 @@ public class ProductoController {
 			System.out.println("Error ocurrio en el controlador de producto al insertar !!");
 		}
 	}
+
 	public void list() {
 		try {
 			listaProductos = pService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar productos en el controller !!");	
+			System.out.println("Error al listar productos en el controller !!");
 			// TODO: handle exception
 		}
 	}
+
 	public void eliminar(Producto pro) {
-		
-			pService.eliminar(pro.getIdProducto());
-			list();
+
+		pService.eliminar(pro.getIdProducto());
+		list();
 	}
-	//getters and setters
+
+	public void listTipoProducto() {
+		try {
+			listaTipoProductos = tiService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar tipoproductos en el controlador");
+		}
+	}
+
+	// getters and setters
 	public Producto getP() {
 		return p;
 	}
+
 	public void setP(Producto p) {
 		this.p = p;
 	}
+
 	public List<Producto> getListaProductos() {
 		return listaProductos;
 	}
+
 	public void setListaProductos(List<Producto> listaProductos) {
 		this.listaProductos = listaProductos;
 	}
-	
-	
-	
-	
-	
-	
+
+	public List<TipoProducto> getListaTipoProductos() {
+		return listaTipoProductos;
+	}
+
+	public void setListaTipoProductos(List<TipoProducto> listaTipoProductos) {
+		this.listaTipoProductos = listaTipoProductos;
+	}
+
 }

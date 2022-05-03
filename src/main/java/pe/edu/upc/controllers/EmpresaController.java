@@ -57,6 +57,29 @@ public class EmpresaController {
 		}
 	}
 
+	public void findByNameEmpresa() {
+		try {
+			listaEmpresas = eService.findByNameEmpresa(this.getE());
+		} catch (Exception e) {
+			System.out.println("Error al buscar Empresa en el controlador");
+		}
+	}
+
+	// lleva la data al formulario
+	public String updatePre(Empresa emp) {
+		this.setE(emp);
+		return "preupdateEmpresa.xhtml";
+	}
+
+	// modificacion en la bd
+	public void update() {
+		try {
+			eService.update(this.emp);
+		} catch (Exception e) {
+			System.out.println("Error al modicar Empresa en el controlador");
+		}
+	}
+
 	// getters & setters
 	public Empresa getE() {
 		return emp;

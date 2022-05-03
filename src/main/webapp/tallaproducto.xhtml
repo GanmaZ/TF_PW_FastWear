@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de tallas productos</h2>
+		<h:form>
+			<h:outputLabel value="Codigo de tallaproducto"
+				styleClass="label-control" for="id" />
+			<p:inputText id="id"
+				value="#{tallaProductoController.tap.idTallaProducto}"
+				styleClass="form-control" required="true" />
+
+			<h:outputLabel value="Producto" styleClass="label-control"
+				for="cboProducto" />
+			<p:selectOneMenu id="cboProducto"
+				value="#{tallaProductoController.tap.producto}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{tallaProductoController.listaProductos}"
+					var="p" itemLabel="#{p.nombreProducto}" itemValue="#{p}" />
+
+			</p:selectOneMenu>
+
+			<h:outputLabel value="Talla" styleClass="label-control"
+				for="cboTalla" />
+			<p:selectOneMenu id="cboTalla"
+				value="#{tallaProductoController.tap.talla}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{tallaProductoController.listaTallas}"
+					var="ta" itemLabel="#{ta.nombreTalla}" itemValue="#{ta}" />
+
+			</p:selectOneMenu>
+
+			<p:commandButton value="Registrar"
+				actionListener="#{tallaProductoController.insert()}"
+				action="tallaproducto?faces-redirect=true" update="@form"></p:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

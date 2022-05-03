@@ -39,11 +39,12 @@ public class ProductoImpl implements IProductoDao {
 		}
 		return listaProductos;
 	}
-@Transactional
+
+	@Transactional
 	@Override
 	public void eliminar(int idProducto) {
 		Producto pro = em.find(Producto.class, idProducto);
-			em.remove(pro);
+		em.remove(pro);
 	}
 
 }
