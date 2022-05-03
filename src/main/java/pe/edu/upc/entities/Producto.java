@@ -1,5 +1,8 @@
 package pe.edu.upc.entities;
 
+import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,10 +20,6 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idProducto;
 
-	@ManyToOne
-	@JoinColumn(name = "TipoProducto", nullable = false)
-	private TipoProducto idTipoproducto;
-
 	@Column(name = "nombreProducto", nullable = false, length = 60)
 	private String nombreProducto;
 
@@ -32,19 +31,20 @@ public class Producto {
 
 	@Column(name = "anioProduccion", nullable = false)
 	private int anioProduccion;
+  
+	@ManyToOne
+	@JoinColumn(name = "TipoProducto", nullable = false)
+	private TipoProducto idTipoproducto;
 
-	/*
-	 * @Column(name="nombreTipoProducto", nullable=false) private String
-	 * nombreTipoProducto;
-	 */
+  
 	public Producto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
+
 	public Producto(int idProducto, TipoProducto tipoproducto, String nombreProducto, String descripcionProducto,
-			double precioProducto, int anioProduccion) {
+			double precioProducto, int anioProduccion, List<Categoria> categorias) {
 		super();
 		this.idProducto = idProducto;
 		this.idTipoproducto = tipoproducto;
@@ -102,14 +102,21 @@ public class Producto {
 		this.idTipoproducto = tipoproducto;
 	}
 
-	/**
-	 * @param idProducto
-	 * @param tipoproducto
-	 * @param nombreProducto
-	 * @param descripcionProducto
-	 * @param precioProducto
-	 * @param anioProduccion
-	 */
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(idProducto);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return idProducto == other.idProducto;
+	}
+	
 }

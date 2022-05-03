@@ -8,7 +8,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.entities.Ciudad;
 import pe.edu.upc.entities.Usuario;
+import pe.edu.upc.serviceinterfaces.ICiudadService;
 import pe.edu.upc.serviceinterfaces.IUsuarioService;
 
 @Named
@@ -16,15 +18,21 @@ import pe.edu.upc.serviceinterfaces.IUsuarioService;
 public class UsuarioController {
 	@Inject
 	private IUsuarioService uService;
+	
+	@Inject
+	private ICiudadService cService;
 
 	private Usuario u;
 	List<Usuario> listaUsuarios;
+	List<Ciudad> listaCiudades;
 
 	@PostConstruct
 	public void init() {
 		this.listaUsuarios = new ArrayList<Usuario>();
+		this.listaCiudades = new ArrayList<Ciudad>();
 		this.u = new Usuario();
 		this.list();
+		this.listCiudades();
 	}
 
 	public String newUsuario() {
@@ -48,6 +56,15 @@ public class UsuarioController {
 		}
 	}
 	
+	//-------------------------------------------
+	public void listCiudades() {
+		try {
+			listaCiudades = cService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar ciudades en el controlador Usuario");
+		}
+	}
+	//-------------------------------------------
 	public void delete(Usuario usr) {
 		try {
 			uService.delete(usr.getIdUsuario());
@@ -72,4 +89,13 @@ public class UsuarioController {
 		this.listaUsuarios = listaUsuarios;
 	}
 
+	public List<Ciudad> getListaCiudades() {
+		return listaCiudades;
+	}
+
+	public void setListaCiudades(List<Ciudad> listaCiudades) {
+		this.listaCiudades = listaCiudades;
+	}
+	
+	
 }

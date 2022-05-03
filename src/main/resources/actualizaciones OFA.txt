@@ -1,4 +1,8 @@
-.Airton
-.jim
+.Airton.
+.jim.
 .joel
+.Javier.
+.Sergio.
+
+
 
