@@ -56,7 +56,7 @@ public class UsuarioController {
 		}
 	}
 	
-	//-------------------------------------------
+	
 	public void listCiudades() {
 		try {
 			listaCiudades = cService.list();
@@ -64,7 +64,7 @@ public class UsuarioController {
 			System.out.println("Error al listar ciudades en el controlador Usuario");
 		}
 	}
-	//-------------------------------------------
+
 	public void delete(Usuario usr) {
 		try {
 			uService.delete(usr.getIdUsuario());

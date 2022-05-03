@@ -18,7 +18,7 @@ public class EmpresaController {
 	private IEmpresaService eService;
 	// atributos
 	private Empresa emp;
-	List<Empresa> listaEmpresas;
+	private List<Empresa> listaEmpresas;
 
 	// metodos
 	@PostConstruct
@@ -54,6 +54,29 @@ public class EmpresaController {
 			eService.delete(emp.getIdEmpresa());
 		} catch (Exception e) {
 			System.out.println("Error al eliminar empresas en el controller");
+		}
+	}
+
+	public void findByNameEmpresa() {
+		try {
+			listaEmpresas = eService.findByNameEmpresa(this.getE());
+		} catch (Exception e) {
+			System.out.println("Error al buscar Empresa en el controlador");
+		}
+	}
+
+	// lleva la data al formulario
+	public String updatePre(Empresa emp) {
+		this.setE(emp);
+		return "preupdateEmpresa.xhtml";
+	}
+
+	// modificacion en la bd
+	public void update() {
+		try {
+			eService.update(this.emp);
+		} catch (Exception e) {
+			System.out.println("Error al modicar Empresa en el controlador");
 		}
 	}
 

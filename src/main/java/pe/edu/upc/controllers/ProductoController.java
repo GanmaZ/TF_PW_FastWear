@@ -8,8 +8,12 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.entities.Empresa;
 import pe.edu.upc.entities.Producto;
 import pe.edu.upc.entities.TipoProducto;
+import pe.edu.upc.serviceinterfaces.IEmpresaService;
+import pe.edu.upc.entities.Marca;
+import pe.edu.upc.serviceinterfaces.IMarcaService;
 import pe.edu.upc.serviceinterfaces.IProductoService;
 import pe.edu.upc.serviceinterfaces.ITipoProductoService;
 
@@ -19,15 +23,21 @@ public class ProductoController {
 	@Inject
 	private IProductoService pService;
 
-	private Producto p;
-	private List<Producto> listaProductos;
-
 	@Inject
 	private ITipoProductoService tiService;
-
-	// atributos
-
+	
+	@Inject
+	private IEmpresaService eService;
+  
+	@Inject
+	private IMarcaService maService;
+  
+	private Producto p;
+	private List<Producto> listaProductos;
 	private List<TipoProducto> listaTipoProductos;
+	private List<Empresa> listaEmpresas;
+	private List<Marca> listaMarcas;
+
 
 	// metodos
 	@PostConstruct
@@ -35,7 +45,11 @@ public class ProductoController {
 		this.p = new Producto();
 		this.listaProductos = new ArrayList<Producto>();
 		this.listaTipoProductos = new ArrayList<TipoProducto>();
+		this.listaEmpresas = new ArrayList<Empresa>();
+		this.listaMarcas = new ArrayList<Marca>();
 		this.listTipoProducto();
+		this.listEmpresa();
+		this.listMarca();
 		this.list();
 	}
 
@@ -76,6 +90,22 @@ public class ProductoController {
 			System.out.println("Error al listar tipoproductos en el controlador");
 		}
 	}
+	
+	public void listEmpresa() {
+		try {
+			listaEmpresas = eService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar Empresa en el controlador");
+		}
+	}
+
+	public void listMarca() {
+		try {
+			listaMarcas=maService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar marca en el controlador");
+		}
+	}
 
 	// getters and setters
 	public Producto getP() {
@@ -100,6 +130,23 @@ public class ProductoController {
 
 	public void setListaTipoProductos(List<TipoProducto> listaTipoProductos) {
 		this.listaTipoProductos = listaTipoProductos;
+	}
+
+	public List<Empresa> getListaEmpresas() {
+		return listaEmpresas;
+	}
+
+	public void setListaEmpresas(List<Empresa> listaEmpresas) {
+		this.listaEmpresas = listaEmpresas;
+	}
+	
+
+	public List<Marca> getListaMarcas() {
+		return listaMarcas;
+	}
+
+	public void setListaMarcas(List<Marca> listaMarcas) {
+		this.listaMarcas = listaMarcas;
 	}
 
 }
