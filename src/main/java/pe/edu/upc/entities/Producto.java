@@ -1,6 +1,5 @@
 package pe.edu.upc.entities;
 
-
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -20,10 +19,6 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idProducto;
 
-	@ManyToOne
-	@JoinColumn(name = "TipoProducto", nullable = false)
-	private TipoProducto idTipoproducto;
-
 	@Column(name = "nombreProducto", nullable = false, length = 60)
 	private String nombreProducto;
 
@@ -36,16 +31,25 @@ public class Producto {
 	@Column(name = "anioProduccion", nullable = false)
 	private int anioProduccion;
 
+	@ManyToOne
+	@JoinColumn(name = "IdTipoProducto", nullable = false)
+	private TipoProducto idTipoproducto;
+
+	@ManyToOne
+	@JoinColumn(name = "IdEmpresa", nullable = false)
+	private Empresa idEmpresa;
+
 	public Producto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(int idProducto, TipoProducto tipoproducto, String nombreProducto, String descripcionProducto,
-			double precioProducto, int anioProduccion) {
+	public Producto(int idProducto, TipoProducto tipoproducto, Empresa idEmpresa, String nombreProducto,
+			String descripcionProducto, double precioProducto, int anioProduccion) {
 		super();
 		this.idProducto = idProducto;
 		this.idTipoproducto = tipoproducto;
+		this.idEmpresa = idEmpresa;
 		this.nombreProducto = nombreProducto;
 		this.descripcionProducto = descripcionProducto;
 		this.precioProducto = precioProducto;
@@ -101,6 +105,14 @@ public class Producto {
 		this.idTipoproducto = tipoproducto;
 	}
 
+	public Empresa getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Empresa idEmpresa) {
+		this.idEmpresa = idEmpresa;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProducto);
@@ -117,4 +129,6 @@ public class Producto {
 		Producto other = (Producto) obj;
 		return idProducto == other.idProducto;
 	}
+	
+	
 }

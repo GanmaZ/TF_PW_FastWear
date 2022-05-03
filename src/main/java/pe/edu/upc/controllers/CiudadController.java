@@ -9,9 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Ciudad;
-import pe.edu.upc.entities.Usuario;
 import pe.edu.upc.serviceinterfaces.ICiudadService;
-import pe.edu.upc.serviceinterfaces.IUsuarioService;
 
 @Named
 @RequestScoped
