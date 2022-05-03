@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import pe.edu.upc.daointerfaces.IEmpresaDao;
+
 import pe.edu.upc.entities.Empresa;
 
 public class EmpresaImpl implements IEmpresaDao {
@@ -53,6 +54,31 @@ public class EmpresaImpl implements IEmpresaDao {
 
 		} catch (Exception e2) {
 			System.out.println("Error al eliminar en el DAO de empresa");
+		}
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Empresa> findByNameEmpresa(Empresa e) {
+		List<Empresa> lista = new ArrayList<Empresa>();
+		try {
+			Query q = em.createQuery("from Empresa e where e.nombreEmpresa like ?1");
+			q.setParameter(1, "%" + e.getNombreEmpresa() + "%");
+			lista = (List<Empresa>) q.getResultList();
+		} catch (Exception e2) {
+			System.out.println("Error al listar empresas en el dao");
+		}
+		return lista;
+	}
+
+	@Transactional
+	@Override
+	public void update(Empresa e) {
+		try {
+			em.merge(e);
+		} catch (Exception e2) {
+			System.out.println("Error al modificar empresas en el dao");
 		}
 
 	}
