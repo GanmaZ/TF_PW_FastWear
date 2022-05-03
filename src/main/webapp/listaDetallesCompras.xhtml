@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Listas de DetallesCompras</h2>
+		<h:form>
+			<p:dataTable id="lstDetallesCompras" var="ldc"
+				value="#{detalleCompraController.listaDetallesCompras}"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen personas en la lista">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{ldc.idDetalleCompra}" />
+				</p:column>
+				<p:column headerText="Importe">
+					<h:outputText value="#{ldc.importe}" />
+				</p:column>
+				<p:column headerText="Cantidad">
+					<h:outputText value="#{ldc.cantidad}" />
+				</p:column>
+				<p:column headerText="Compra">
+					<h:outputText value="#{ldc.compra.usuario.nombreUsuario}" />
+				</p:column>
+				<p:column headerText="Producto">
+					<h:outputText value="#{ldc.producto.nombreProducto}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

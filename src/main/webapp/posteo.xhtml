@@ -29,6 +29,28 @@
 				styleClass="control-label" />
 			<p:inputText id="cantreaccion" styleClass="form-control"
 				value="#{posteoController.p.cantReacciones}"></p:inputText>
+				
+			<h:outputLabel value="Usuario" styleClass="label-control"
+				for="cboUsuario" />
+
+			<p:selectOneMenu id="cboUsuario"
+				value="#{posteoController.p.usuario}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems
+					value="#{posteoController.listaUsuarios}" var="p"
+					itemLabel="#{p.nombreUsuario}" itemValue="#{p}" />
+			</p:selectOneMenu>
+			
+			<h:outputLabel value="Empresa" styleClass="label-control"
+				for="cboEmpresa" />
+
+			<p:selectOneMenu id="cboEmpresa"
+				value="#{posteoController.p.empresa}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems
+					value="#{posteoController.listaEmpresas}" var="p"
+					itemLabel="#{p.nombreEmpresa}" itemValue="#{p}" />
+			</p:selectOneMenu>
 			 
 			<p:commandButton value="Grabar"
 				actionListener="#{posteoController.insert()}"

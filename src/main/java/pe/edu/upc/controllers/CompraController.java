@@ -9,23 +9,30 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Compra;
+import pe.edu.upc.entities.Usuario;
 import pe.edu.upc.serviceinterfaces.ICompraService;
+import pe.edu.upc.serviceinterfaces.IUsuarioService;
 
 @Named
 @RequestScoped
 public class CompraController {
 	@Inject
 	private ICompraService cService;
+	@Inject
+	private IUsuarioService uService;
 
 //atributos
 	private Compra c;
-	List<Compra> listaCompras;
+	private List<Compra> listaCompras;
+	private List<Usuario> listaUsuarios;
 
 	// métodos
 	@PostConstruct
 	public void init() {
 		this.listaCompras = new ArrayList<Compra>();
+		this.listaUsuarios = new ArrayList<Usuario>();
 		this.c = new Compra();
+		this.listUsuarios();
 		this.list();
 	}
 
@@ -47,6 +54,14 @@ public class CompraController {
 			listaCompras = cService.list();
 		} catch (Exception e) {
 			System.out.println("Error al listar compras en el controller");
+		}
+	}
+	
+	public void listUsuarios() {
+		try {
+			listaUsuarios = uService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar Uusarios en el controlador Compra");
 		}
 	}
 
@@ -75,4 +90,13 @@ public class CompraController {
 		this.listaCompras = listaCompras;
 	}
 
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+
+	
 }
