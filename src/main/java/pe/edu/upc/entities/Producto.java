@@ -8,11 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Producto")
-
 public class Producto {
 
 	@Id
@@ -30,18 +31,23 @@ public class Producto {
 
 	@Column(name = "anioProduccion", nullable = false)
 	private int anioProduccion;
+  
+	@ManyToOne
+	@JoinColumn(name = "TipoProducto", nullable = false)
+	private TipoProducto idTipoproducto;
 
-	
-
+  
 	public Producto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(int idProducto, String nombreProducto, String descripcionProducto, double precioProducto,
-			int anioProduccion, List<Categoria> categorias) {
+
+	public Producto(int idProducto, TipoProducto tipoproducto, String nombreProducto, String descripcionProducto,
+			double precioProducto, int anioProduccion, List<Categoria> categorias) {
 		super();
 		this.idProducto = idProducto;
+		this.idTipoproducto = tipoproducto;
 		this.nombreProducto = nombreProducto;
 		this.descripcionProducto = descripcionProducto;
 		this.precioProducto = precioProducto;
@@ -88,6 +94,14 @@ public class Producto {
 		this.anioProduccion = anioProduccion;
 	}
 
+	public TipoProducto getTipoproducto() {
+		return idTipoproducto;
+	}
+
+	public void setTipoproducto(TipoProducto tipoproducto) {
+		this.idTipoproducto = tipoproducto;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProducto);
@@ -104,8 +118,5 @@ public class Producto {
 		Producto other = (Producto) obj;
 		return idProducto == other.idProducto;
 	}
-
-	
-
 	
 }
