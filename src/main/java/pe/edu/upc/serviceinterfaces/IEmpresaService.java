@@ -11,4 +11,7 @@ public interface IEmpresaService {
 
 	public void delete(int id);
 
+	public List<Empresa> findByNameEmpresa(Empresa e);
+
+	public void update(Empresa emp);
 }
