@@ -11,27 +11,59 @@
 		<h2>Registro de Productos</h2>
 		<h:form>
 			<h:outputLabel value="ID" for="id" styleClass="control-label" />
-			<p:inputText id ="id" styleClass="form-control" value="#{productoController.p.idProducto}"></p:inputText>
-			
+			<p:inputText id="id" styleClass="form-control"
+				value="#{productoController.p.idProducto}"></p:inputText>
+
 			<h:outputLabel value="Nombre" for="nombre" styleClass="control-label" />
-			<p:inputText id ="nombre" styleClass="form-control" value="#{productoController.p.nombreProducto}"></p:inputText>
+			<p:inputText id="nombre" styleClass="form-control"
+				value="#{productoController.p.nombreProducto}"></p:inputText>
+
+			<h:outputLabel value="Descripcion" for="descripcion"
+				styleClass="control-label" />
+			<p:inputText id="descripcion" styleClass="form-control"
+				value="#{productoController.p.descripcionProducto}"></p:inputText>
+
+			<h:outputLabel value="TipoProducto" for="cboTipoProducto"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboTipoProducto"
+				value="#{productoController.p.tipoproducto}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{productoController.listaTipoProductos}"
+					var="tp" itemLabel="#{tp.nombreTipoProducto}" itemValue="#{tp}" />
+			</p:selectOneMenu>
 			
-			<h:outputLabel value="Descripcion" for="descripcion" styleClass="control-label" />
-			<p:inputText id ="descripcion" styleClass="form-control" value="#{productoController.p.descripcionProducto}"></p:inputText>
+			<h:outputLabel value="Empresa" for="cboEmpresa"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboEmpresa"
+				value="#{productoController.p.idEmpresa}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{productoController.listaEmpresas}"
+					var="tp" itemLabel="#{tp.nombreEmpresa}" itemValue="#{tp}" />
+			</p:selectOneMenu>
+			
+			<h:outputLabel value="Marca" for="cboMarca"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboMarca"
+				value="#{productoController.p.idMarca}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{productoController.listaMarcas}" var="ma"
+					itemLabel="#{ma.nombreMarca}" itemValue="#{ma}" />
+			</p:selectOneMenu>
 			
 			<h:outputLabel value="Precio" for="precio" styleClass="control-label" />
-			<p:inputText id ="precio" styleClass="form-control" value="#{productoController.p.precioProducto}"></p:inputText>
-			
-			<h:outputLabel value="Anio Fabricacion" for="anioproduccion" styleClass="control-label" />
-			<p:inputText id ="anioproduccion" styleClass="form-control" value="#{productoController.p.anioProduccion}"></p:inputText>
+			<p:inputText id="precio" styleClass="form-control"
+				value="#{productoController.p.precioProducto}"></p:inputText>
 
-		<p:commandButton
-		value="Grabar" actionListener="#{productoController.insert()}" action="producto?faces-redirect=true" update ="@form">
-		</p:commandButton>
-		
+			<h:outputLabel value="Anio Fabricacion" for="anioproduccion"
+				styleClass="control-label" />
+			<p:inputText id="anioproduccion" styleClass="form-control"
+				value="#{productoController.p.anioProduccion}"></p:inputText>
+
+			<p:commandButton value="Grabar"
+				actionListener="#{productoController.insert()}"
+				action="producto?faces-redirect=true" update="@form">
+			</p:commandButton>
 		</h:form>
 	</ui:define>
-
-
 </ui:composition>
 </html>
