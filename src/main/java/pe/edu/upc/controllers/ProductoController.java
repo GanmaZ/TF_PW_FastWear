@@ -46,7 +46,7 @@ public class ProductoController {
 		this.listaProductos = new ArrayList<Producto>();
 		this.listaTipoProductos = new ArrayList<TipoProducto>();
 		this.listaEmpresas = new ArrayList<Empresa>();
-    this.listaMarcas = new ArrayList<Marca>();
+		this.listaMarcas = new ArrayList<Marca>();
 		this.listTipoProducto();
 		this.listEmpresa();
 		this.listMarca();
