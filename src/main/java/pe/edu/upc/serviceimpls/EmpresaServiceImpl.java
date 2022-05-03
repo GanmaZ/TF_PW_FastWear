@@ -23,19 +23,16 @@ public class EmpresaServiceImpl implements IEmpresaService {
 
 	@Override
 	public List<Empresa> list() {
-		// TODO Auto-generated method stub
 		return eDao.list();
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
 		eDao.delete(id);
 	}
 
 	@Override
 	public List<Empresa> findByNameEmpresa(Empresa e) {
-		// TODO Auto-generated method stub
 		return eDao.findByNameEmpresa(e);
 	}
 

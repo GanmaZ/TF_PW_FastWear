@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de DetalleCompra</h2>
+		<h:form>
+			<h:outputLabel value="ID" for="id" styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{detalleCompraController.dc.idDetalleCompra}"></p:inputText>
+
+			<h:outputLabel value="Importe" for="importe" styleClass="control-label" />
+			<p:inputText id="importe" styleClass="form-control"
+				value="#{detalleCompraController.dc.importe}"></p:inputText>
+
+			<h:outputLabel value="Cantidad" for="cantidad"
+				styleClass="control-label" />
+			<p:inputText id="cantidad" styleClass="form-control"
+				value="#{detalleCompraController.dc.cantidad}"></p:inputText>
+
+			<h:outputLabel value="Compra" for="cboCompra" styleClass="control-label" />
+			<p:selectOneMenu id="cboCompra"
+				value="#{detalleCompraController.dc.compra}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{detalleCompraController.listaCompras}"
+					var="dc" itemLabel="#{dc.usuario.nombreUsuario}" itemValue="#{dc}" />
+			</p:selectOneMenu>
+
+			<h:outputLabel value="Producto" for="cboProducto"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboProducto"
+				value="#{detalleCompraController.dc.producto}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{detalleCompraController.listaProductos}" var="dc"
+					itemLabel="#{dc.nombreProducto}" itemValue="#{dc}" />
+			</p:selectOneMenu>
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{detalleCompraController.insert()}"
+				action="DetalleCompra?faces-redirect=true" update="@form">
+			</p:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
