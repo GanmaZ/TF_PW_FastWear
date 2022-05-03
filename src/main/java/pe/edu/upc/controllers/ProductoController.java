@@ -8,8 +8,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.entities.Marca;
 import pe.edu.upc.entities.Producto;
 import pe.edu.upc.entities.TipoProducto;
+import pe.edu.upc.serviceinterfaces.IMarcaService;
 import pe.edu.upc.serviceinterfaces.IProductoService;
 import pe.edu.upc.serviceinterfaces.ITipoProductoService;
 
@@ -24,10 +26,13 @@ public class ProductoController {
 
 	@Inject
 	private ITipoProductoService tiService;
+	@Inject
+	private IMarcaService maService;
 
 	// atributos
 
 	private List<TipoProducto> listaTipoProductos;
+	private List<Marca> listaMarcas;
 
 	// metodos
 	@PostConstruct
@@ -36,6 +41,8 @@ public class ProductoController {
 		this.listaProductos = new ArrayList<Producto>();
 		this.listaTipoProductos = new ArrayList<TipoProducto>();
 		this.listTipoProducto();
+		this.listaMarcas = new ArrayList<Marca>();
+		this.listMarca();
 		this.list();
 	}
 
@@ -76,7 +83,13 @@ public class ProductoController {
 			System.out.println("Error al listar tipoproductos en el controlador");
 		}
 	}
-
+	public void listMarca() {
+		try {
+			listaMarcas=maService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar marca en el controlador");
+		}
+	}
 	// getters and setters
 	public Producto getP() {
 		return p;
@@ -100,6 +113,14 @@ public class ProductoController {
 
 	public void setListaTipoProductos(List<TipoProducto> listaTipoProductos) {
 		this.listaTipoProductos = listaTipoProductos;
+	}
+
+	public List<Marca> getListaMarcas() {
+		return listaMarcas;
+	}
+
+	public void setListaMarcas(List<Marca> listaMarcas) {
+		this.listaMarcas = listaMarcas;
 	}
 
 }
