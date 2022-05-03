@@ -24,7 +24,11 @@ public class Producto {
 
 	@Column(name = "descripcionProducto", nullable = false, length = 200)
 	private String descripcionProducto;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "Marca", nullable = false)
+	private Marca idMarca;
+	
 	@Column(name = "precioProducto", nullable = false)
 	private double precioProducto;
 
@@ -44,14 +48,16 @@ public class Producto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(int idProducto, TipoProducto tipoproducto, Empresa idEmpresa, String nombreProducto,
-			String descripcionProducto, double precioProducto, int anioProduccion) {
+
+	public Producto(int idProducto, TipoProducto tipoproducto, Empresa idEmpresa, String nombreProducto, String descripcionProducto, Marca marca,
+			double precioProducto, int anioProduccion) {
 		super();
 		this.idProducto = idProducto;
 		this.idTipoproducto = tipoproducto;
 		this.idEmpresa = idEmpresa;
 		this.nombreProducto = nombreProducto;
 		this.descripcionProducto = descripcionProducto;
+		this.idMarca=marca;
 		this.precioProducto = precioProducto;
 		this.anioProduccion = anioProduccion;
 
@@ -80,6 +86,7 @@ public class Producto {
 	public void setDescripcionProducto(String descripcionProducto) {
 		this.descripcionProducto = descripcionProducto;
 	}
+
 
 	public double getPrecioProducto() {
 		return precioProducto;
@@ -113,6 +120,14 @@ public class Producto {
 		this.idEmpresa = idEmpresa;
 	}
 
+	public Marca getIdMarca() {
+		return idMarca;
+	}
+
+	public void setIdMarca(Marca marca) {
+		this.idMarca = marca;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProducto);

@@ -41,7 +41,15 @@
 					var="tp" itemLabel="#{tp.nombreEmpresa}" itemValue="#{tp}" />
 			</p:selectOneMenu>
 			
-
+			<h:outputLabel value="Marca" for="cboMarca"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboMarca"
+				value="#{productoController.p.idMarca}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{productoController.listaMarcas}" var="ma"
+					itemLabel="#{ma.nombreMarca}" itemValue="#{ma}" />
+			</p:selectOneMenu>
+			
 			<h:outputLabel value="Precio" for="precio" styleClass="control-label" />
 			<p:inputText id="precio" styleClass="form-control"
 				value="#{productoController.p.precioProducto}"></p:inputText>
