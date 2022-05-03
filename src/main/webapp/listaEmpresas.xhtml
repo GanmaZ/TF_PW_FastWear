@@ -9,6 +9,20 @@
 	<ui:define name="content">
 		<h2>Listas de empresas</h2>
 		<h:form>
+			<div class="row">
+				<div class="col-sm-4">
+					<h:outputLabel value="Ingrese nombre de la empresa a buscar: "
+						for="empresa" styleClass="control-label" />
+
+					<p:inputText id="empresa"
+						value="#{empresaController.e.nombreEmpresa}"
+						styleClass="form-control" />
+					<p:commandButton value="Buscar"
+						actionListener="#{empresaController.findByNameEmpresa()}"
+						update="lstPersona" />
+				</div>
+
+			</div>
 			<p:dataTable id="lstPersona" var="pe"
 				value="#{empresaController.listaEmpresas}" paginator="true"
 				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25" rows="5"
@@ -48,6 +62,11 @@
 				<p:column headerText="Operacion">
 					<h:commandLink action="listaEmpresas" value="Eliminar"
 						actionListener="#{empresaController.delete(pe)}" />
+				</p:column>
+
+				<p:column headerText="Operacion2">
+					<h:commandLink action="#{empresaController.updatePre(pe)}"
+						value="Modificar" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

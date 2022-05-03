@@ -1,5 +1,6 @@
 package pe.edu.upc.entities;
 
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -35,13 +36,11 @@ public class Producto {
 	@Column(name = "anioProduccion", nullable = false)
 	private int anioProduccion;
 
-	
 	public Producto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	public Producto(int idProducto, TipoProducto tipoproducto, String nombreProducto, String descripcionProducto,
 			double precioProducto, int anioProduccion) {
 		super();
@@ -51,6 +50,7 @@ public class Producto {
 		this.descripcionProducto = descripcionProducto;
 		this.precioProducto = precioProducto;
 		this.anioProduccion = anioProduccion;
+
 	}
 
 	public int getIdProducto() {
@@ -101,12 +101,10 @@ public class Producto {
 		this.idTipoproducto = tipoproducto;
 	}
 
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProducto);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -119,8 +117,4 @@ public class Producto {
 		Producto other = (Producto) obj;
 		return idProducto == other.idProducto;
 	}
-
-	
-	
-	
 }
