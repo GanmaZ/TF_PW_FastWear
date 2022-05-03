@@ -15,8 +15,7 @@
 				value="#{compraController.c.idCompra}"></p:inputText>
 
 
-			<h:outputLabel value="Total: " for="total"
-				styleClass="control-label" />
+			<h:outputLabel value="Total: " for="total" styleClass="control-label" />
 			<p:inputText id="Total" styleClass="form-control"
 				value="#{compraController.c.total}"></p:inputText>
 
@@ -32,6 +31,15 @@
 				styleClass="control-label" />
 			<p:inputText id="metodoPago" styleClass="form-control"
 				value="#{compraController.c.metodoPago}"></p:inputText>
+
+			<h:outputLabel value="Usuario" styleClass="label-control"
+				for="cboUsuario" />
+
+			<p:selectOneMenu id="cboUsuaio" value="#{compraController.c.usuario}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{compraController.listaUsuarios}" var="c"
+					itemLabel="#{c.nombreUsuario}" itemValue="#{c}" />
+			</p:selectOneMenu>
 
 
 			<p:commandButton value="Grabar"
