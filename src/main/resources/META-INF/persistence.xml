@@ -17,6 +17,8 @@
 		<class>pe.edu.upc.entities.CategoriaProducto</class>
 		<class>pe.edu.upc.entities.Talla</class>
 		<class>pe.edu.upc.entities.TallaProducto</class>
+		<class>pe.edu.upc.entities.Marca</class>
+		<class>pe.edu.upc.entities.DetalleCompra</class>
 
 		<properties>
 			<property

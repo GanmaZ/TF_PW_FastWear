@@ -1,6 +1,5 @@
 package pe.edu.upc.entities;
 
-
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -20,34 +19,45 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idProducto;
 
-	@ManyToOne
-	@JoinColumn(name = "TipoProducto", nullable = false)
-	private TipoProducto idTipoproducto;
-
 	@Column(name = "nombreProducto", nullable = false, length = 60)
 	private String nombreProducto;
 
 	@Column(name = "descripcionProducto", nullable = false, length = 200)
 	private String descripcionProducto;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "IdMarca", nullable = false)
+	private Marca idMarca;
+	
 	@Column(name = "precioProducto", nullable = false)
 	private double precioProducto;
 
 	@Column(name = "anioProduccion", nullable = false)
 	private int anioProduccion;
 
+	@ManyToOne
+	@JoinColumn(name = "IdTipoProducto", nullable = false)
+	private TipoProducto idTipoproducto;
+
+	@ManyToOne
+	@JoinColumn(name = "IdEmpresa", nullable = false)
+	private Empresa idEmpresa;
+
 	public Producto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Producto(int idProducto, TipoProducto tipoproducto, String nombreProducto, String descripcionProducto,
+
+	public Producto(int idProducto, TipoProducto tipoproducto, Empresa idEmpresa, String nombreProducto, String descripcionProducto, Marca idmarca,
 			double precioProducto, int anioProduccion) {
 		super();
 		this.idProducto = idProducto;
 		this.idTipoproducto = tipoproducto;
+		this.idEmpresa = idEmpresa;
 		this.nombreProducto = nombreProducto;
 		this.descripcionProducto = descripcionProducto;
+		this.idMarca=idmarca;
 		this.precioProducto = precioProducto;
 		this.anioProduccion = anioProduccion;
 
@@ -77,6 +87,7 @@ public class Producto {
 		this.descripcionProducto = descripcionProducto;
 	}
 
+
 	public double getPrecioProducto() {
 		return precioProducto;
 	}
@@ -101,6 +112,22 @@ public class Producto {
 		this.idTipoproducto = tipoproducto;
 	}
 
+	public Empresa getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Empresa idEmpresa) {
+		this.idEmpresa = idEmpresa;
+	}
+
+	public Marca getIdMarca() {
+		return idMarca;
+	}
+
+	public void setIdMarca(Marca marca) {
+		this.idMarca = marca;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(idProducto);
@@ -117,4 +144,6 @@ public class Producto {
 		Producto other = (Producto) obj;
 		return idProducto == other.idProducto;
 	}
+	
+	
 }

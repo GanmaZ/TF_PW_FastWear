@@ -18,7 +18,7 @@ public class EmpresaController {
 	private IEmpresaService eService;
 	// atributos
 	private Empresa emp;
-	List<Empresa> listaEmpresas;
+	private List<Empresa> listaEmpresas;
 
 	// metodos
 	@PostConstruct
