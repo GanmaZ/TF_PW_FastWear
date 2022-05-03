@@ -23,10 +23,6 @@ public class TipoProducto {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param idTipoProducto
-	 * @param nombreTipoProducto
-	 */
 	public TipoProducto(int idTipoProducto, String nombreTipoProducto) {
 		super();
 		this.idTipoProducto = idTipoProducto;
