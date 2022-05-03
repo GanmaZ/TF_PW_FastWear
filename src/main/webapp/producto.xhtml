@@ -36,16 +36,15 @@
 
 			</p:selectOneMenu>
 
-			<!--
-		 	<h:outputLabel value="TipoProducto:" styleClass="label-control" for="cboTipoProducto" />
-		 	<p:selectOneMenu id="cboTipoProducto" value="#{productoController.p.tipoproducto}">
-		 	<f:selectItem itemLabel="Polo" itemValue="1"/>
-		 	<f:selectItem itemLabel="Pantalon" itemValue="2"/>
-		 	<f:selectItem itemLabel="Polera" itemValue="3"/>
-		 	<f:selectItem itemLabel="Casaca" itemValue="4"/>
-		 	<f:selectItem itemLabel="Gorra" itemValue="5"/>
-		 	</p:selectOneMenu>
-		 -->
+			<h:outputLabel value="Marca" for="cboMarca"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboMarca"
+				value="#{productoController.p.idMarca}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{productoController.listaMarcas}" var="ma"
+					itemLabel="#{ma.nombreMarca}" itemValue="#{ma}" />
+			</p:selectOneMenu>
+			
 			<h:outputLabel value="Precio" for="precio" styleClass="control-label" />
 			<p:inputText id="precio" styleClass="form-control"
 				value="#{productoController.p.precioProducto}"></p:inputText>
@@ -59,7 +58,6 @@
 				actionListener="#{productoController.insert()}"
 				action="producto?faces-redirect=true" update="@form">
 			</p:commandButton>
-<!--  -->
 		</h:form>
 	</ui:define>
 
