@@ -26,7 +26,7 @@ public class Producto {
 	private String descripcionProducto;
 	
 	@ManyToOne
-	@JoinColumn(name = "Marca", nullable = false)
+	@JoinColumn(name = "IdMarca", nullable = false)
 	private Marca idMarca;
 	
 	@Column(name = "precioProducto", nullable = false)
@@ -49,7 +49,7 @@ public class Producto {
 	}
 
 
-	public Producto(int idProducto, TipoProducto tipoproducto, Empresa idEmpresa, String nombreProducto, String descripcionProducto, Marca marca,
+	public Producto(int idProducto, TipoProducto tipoproducto, Empresa idEmpresa, String nombreProducto, String descripcionProducto, Marca idmarca,
 			double precioProducto, int anioProduccion) {
 		super();
 		this.idProducto = idProducto;
@@ -57,7 +57,7 @@ public class Producto {
 		this.idEmpresa = idEmpresa;
 		this.nombreProducto = nombreProducto;
 		this.descripcionProducto = descripcionProducto;
-		this.idMarca=marca;
+		this.idMarca=idmarca;
 		this.precioProducto = precioProducto;
 		this.anioProduccion = anioProduccion;
 
